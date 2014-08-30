@@ -5,14 +5,18 @@ import (
   "strconv"
 )
 
+var bridgeTypes []BridgeType
 var bridgeList []Bridge
-var number int
 
 type BridgeService struct {
   gorest.RestService `root:"/bridges/" consumes:"application/json" produces:"application/json"`
 
   list gorest.EndPoint `method:"GET" path:"/" output:"[]Bridge"`
-  add gorest.EndPoint `method:"GET" path:"/add" output:"Bridge"`
+  types gorest.EndPoint `method:"GET" path:"/types" output:"[]BridgeType"`  
+}
+
+func(serv BridgeService) List()[]Bridge{
+  return bridgeList
 }
 
 func(serv BridgeService) List()[]Bridge{
@@ -26,9 +30,19 @@ func(serv BridgeService) Add()Bridge{
   return temp;
 }
 
-type Bridge struct {
+type Bridge interface {
+  id() int32
+  name() string
+  kind() string
+}
+
+type BridgeType struct {
   Name string
-  Kind string
+  BridgeInterface interface
+}
+
+type BridgeInterface interface {
+  parameters()
 }
 
 /*

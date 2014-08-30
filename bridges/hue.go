@@ -1,7 +1,9 @@
 package bridges
 
 import (
-//  "github.com/keep94/gohue"
+  "github.com/lordmortis/jarvisdaemon/hue"
 )
 
+type HueBridgeInterface struct {
 
+}
