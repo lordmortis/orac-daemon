@@ -2,25 +2,35 @@ package bridges
 
 import (
   "code.google.com/p/gorest"
-  "strconv"
 )
 
+type BridgeType struct {
+  Name string
+  Path string
+}
+
 var bridgeTypes []BridgeType
-var bridgeList []Bridge
+//var bridgeList []Bridge
+
+func init() {
+//  gorest.RegisterService(new(BridgeService))
+/*  var temp = BridgeType{Name: "Hue", Path: "hue"}
+  bridgeTypes = bridgeTypes.append(bridgeTypes, temp)*/
+}
 
 type BridgeService struct {
   gorest.RestService `root:"/bridges/" consumes:"application/json" produces:"application/json"`
 
-  list gorest.EndPoint `method:"GET" path:"/" output:"[]Bridge"`
-  types gorest.EndPoint `method:"GET" path:"/types" output:"[]BridgeType"`  
+//  list gorest.EndPoint `method:"GET" path:"/" output:"[]Bridge"`
+//  types gorest.EndPoint `method:"GET" path:"/types" output:"[]BridgeType"`  
 }
 
-func(serv BridgeService) List()[]Bridge{
+/*func(serv BridgeService) List()[]Bridge{
   return bridgeList
 }
 
-func(serv BridgeService) List()[]Bridge{
-  return bridgeList
+func(serv BridgeService) Types()[]Bridge{
+  return bridgeTypes
 }
 
 func(serv BridgeService) Add()Bridge{
@@ -36,14 +46,10 @@ type Bridge interface {
   kind() string
 }
 
-type BridgeType struct {
-  Name string
-  BridgeInterface interface
-}
 
 type BridgeInterface interface {
   parameters()
-}
+}*/
 
 /*
 type BridgeService struct {

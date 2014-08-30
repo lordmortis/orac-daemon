@@ -1,4 +1,4 @@
-# Jarvis Home Automation Daemon
+# Orac Home Automation Daemon
 
 ## Basic 
 
